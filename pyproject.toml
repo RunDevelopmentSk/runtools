@@ -1,0 +1,17 @@
+[build-system]
+requires = ["setuptools>=77"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "runtools"
+version = "0.1.0"
+description = "Pomocné Python skripty pre projekty RunDevelopment."
+requires-python = ">=3.10"
+
+[project.scripts]
+dockerinfo = "runtools.dockerinfo:main"
+gitexport = "runtools.gitexport:main"
+gitmirror = "runtools.gitmirror:main"
+
+[tool.setuptools.packages.find]
+where = ["src"]

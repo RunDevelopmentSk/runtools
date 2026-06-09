@@ -11,8 +11,8 @@
     "customizations": {
         "vscode": {
             "extensions": [
-                "mrcrowl.hg",
-                "eamodio.gitlens",
+                "ms-python.python",
+                "mhutchie.git-graph",
                 "geddski.macros",
                 "davidanson.vscode-markdownlint",
                 "augment.vscode-augment",

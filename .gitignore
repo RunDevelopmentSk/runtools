@@ -1,0 +1,22 @@
+# Python bytecode
+__pycache__/
+*.py[cod]
+*$py.class
+
+# Packaging / build artefakty
+build/
+dist/
+*.egg-info/
+*.egg
+
+# Virtuálne prostredia
+.venv/
+venv/
+env/
+
+# Editor / IDE
+.vscode/*
+!.vscode/launch.json
+!.vscode/tasks.json
+.idea/
+*.swp

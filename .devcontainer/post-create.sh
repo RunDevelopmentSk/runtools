@@ -5,9 +5,9 @@
 echo "" && echo "Installing python packages..."
 pip install -r ./.devcontainer/requirements.txt --break-system-packages
 
-# install precomint hooks
-echo "" && echo "Installing precommit..."
-pre-commit install
+# # install precomint hooks
+# echo "" && echo "Installing precommit..."
+# pre-commit install
 
 # install Claude Code CLI
 echo "" && echo "Installing Claude Code CLI..."
