@@ -9,39 +9,61 @@ k dispozícii ako konzolové príkazy:
 
 ## Inštalácia
 
-### Z konzoly
+> **Poznámka:** Python 3.12+ na Debian/Ubuntu systémoch blokuje inštaláciu
+> balíkov priamo do systémového Pythonu (PEP 668). Pre CLI nástroje odporúčame
+> `pipx`, ktorý to rieši automaticky.
+
+### Cez `pipx` (odporúčané)
+
+`pipx` nainštaluje balík do izolovaného virtuálneho prostredia a konzolové
+príkazy (`dockerinfo`, `gitexport`, `gitmirror`) sprístupní globálne v `PATH`.
+
+**Inštalácia `pipx`** (ak ho ešte nemáš):
 
 ```bash
-python -m pip install "runtools @ git+ssh://git@github.com/RunDevelopmentSk/runtools.git@main"
+sudo apt install pipx
+pipx ensurepath
 ```
 
-### Cez `requirements.txt`
+Po `ensurepath` reštartuj terminál (alebo spusti `source ~/.bashrc`), aby sa
+cesta prejavila.
+
+**Inštalácia `runtools`:**
+
+```bash
+pipx install "runtools @ git+https://git@github.com/RunDevelopmentSk/runtools.git@main"
+```
+
+### Cez `requirements.txt` (devcontainer / venv)
 
 Pridaj do `requirements.txt`:
 
-```
-runtools @ git+ssh://git@github.com/RunDevelopmentSk/runtools.git@main
+```text
+runtools @ git+https://git@github.com/RunDevelopmentSk/runtools.git@main
 ```
 
-a nainštaluj:
+a nainštaluj s `--break-system-packages` (vhodné v devcontaineri alebo venv):
 
 ```bash
-python -m pip install -r requirements.txt
+pip install -r requirements.txt --break-system-packages
 ```
 
 ## Aktualizácia
 
-Keďže inštalácia ide vždy z vetvy `main` (bez verzovania), pip pri opätovnom
-spustení `install` nemusí zaznamenať zmenu commit hashu. Pre aktualizáciu na
-najnovší stav `main` pridaj `--upgrade --force-reinstall`:
+Keďže inštalácia ide vždy z vetvy `main` (bez verzovania), pip/pipx pri
+opätovnom spustení nemusí zaznamenať zmenu commit hashu.
+
+### Cez `pipx`
 
 ```bash
-python -m pip install --upgrade --force-reinstall \
-    "runtools @ git+ssh://git@github.com/RunDevelopmentSk/runtools.git@main"
+pipx install --force "runtools @ git+https://git@github.com/RunDevelopmentSk/runtools.git@main"
 ```
 
-Pri inštalácii z `requirements.txt`:
+(`pipx upgrade runtools` nie je spoľahlivé pri inštalácii z gitu bez tagov —
+preto `--force`.)
+
+### Cez `requirements.txt`
 
 ```bash
-python -m pip install --upgrade --force-reinstall -r requirements.txt
+pip install --upgrade --force-reinstall -r requirements.txt --break-system-packages
 ```

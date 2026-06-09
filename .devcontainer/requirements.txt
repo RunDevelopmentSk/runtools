@@ -1,4 +1,2 @@
 # Installed by devcontainer/devcontainer.json > postCreateCommand
 # and by prodcontainer/docker-compose.yml > services.web.command
-
-runtools @ git+ssh://git@github.com/RunDevelopmentSk/runtools.git@main

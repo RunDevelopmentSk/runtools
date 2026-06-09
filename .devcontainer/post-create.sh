@@ -5,6 +5,9 @@
 echo "" && echo "Installing python packages..."
 pip install -r ./.devcontainer/requirements.txt --break-system-packages
 
+# install CLI tools using pipx
+pipx install "runtools @ git+https://git@github.com/RunDevelopmentSk/runtools.git@main"
+
 # # install precomint hooks
 # echo "" && echo "Installing precommit..."
 # pre-commit install
