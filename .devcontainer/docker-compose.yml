@@ -1,0 +1,53 @@
+version: '3.7'
+
+services:
+  app:
+    # # Docker image for app service is build separately to make the
+    # # docker-compose more time efficiet (see Dockerfile initial comment)
+    # build:
+    #   context: ..
+    #   dockerfile: .devcontainer/Dockerfile.fajnubuntu-noble-20251013
+    image: developmentrunsk/fajnubuntu:noble-20251013
+    # To make it run on ARM processors too
+    platform: linux/amd64
+    # Enable an init process and interactive TTY to properly handle signals,
+    # prevent zombie processes, and support interactive shells/tools
+    init: true
+    tty: true
+    stdin_open: true
+    environment:
+      - TZ=${TZ:-Europe/Bratislava}
+    volumes:
+      # Mount workspaces folder (`:cached` improves the performance on Mac and Windows)
+      - ../..:/home/ubuntu/workspaces:cached
+      # Mount other project folders if needed
+      #- ../../perly:/home/ubuntu/workspaces/other-projects/perly:cached
+      # Mount local user:
+      # - .hgrc and .gitconfig files to ensure the same user for Mercurial and Git.
+      # - .ssh files to allow Git to use local user SSH key for authentication.
+      # ATTENTION: If this does not work for WINDOWS, then an `.env` file with `HOME=C:\path\to\user\home`
+      # must be created in the .devcontainer folder.
+      - $HOME/.hgrc:/home/ubuntu/.hgrc:ro
+      - $HOME/.gitconfig:/home/ubuntu/.gitconfig:ro
+      - $HOME/.ssh:/home/ubuntu/.ssh:ro
+      # Store image user files placed under preserved folder in named volume
+      - app-ubuntu-preserved:/home/ubuntu/preserved
+      # Store VS Code global storage data (e.g. augment code data) in named volume
+      # to preserve them even after the container is rebuild
+      - app-ubuntu-vscode-global-storage:/home/ubuntu/.vscode-server/data/User/globalStorage
+      # Store Claude Code config/login/settings
+      - app-ubuntu-claude-code:/home/ubuntu/.claude
+      # Store Antigravity / Gemini config/login/settings
+      - app-ubuntu-gemini:/home/ubuntu/.gemini
+      # Store Codex config/login/settings
+      - app-ubuntu-codex:/home/ubuntu/.codex
+      # Store Auggie config/login/settings
+      - app-ubuntu-augment:/home/ubuntu/.augment
+
+volumes:
+  app-ubuntu-preserved:
+  app-ubuntu-vscode-global-storage:
+  app-ubuntu-claude-code:
+  app-ubuntu-gemini:
+  app-ubuntu-codex:
+  app-ubuntu-augment:

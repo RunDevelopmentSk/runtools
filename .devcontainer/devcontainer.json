@@ -1,0 +1,57 @@
+{
+    "name": "${localWorkspaceFolderBasename}",
+    "dockerComposeFile": "docker-compose.yml",
+    "service": "app",
+    "workspaceFolder": "/home/ubuntu/workspaces/${localWorkspaceFolderBasename}",
+    "postStartCommand": "bash ./.devcontainer/post-start.sh",
+    "postCreateCommand": "bash ./.devcontainer/post-create.sh",
+    "containerEnv": {
+        "DOCKER_WORKDIR_LOCAL_BASENAME": "${localWorkspaceFolderBasename}"
+    },
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "mrcrowl.hg",
+                "eamodio.gitlens",
+                "geddski.macros",
+                "davidanson.vscode-markdownlint",
+                "augment.vscode-augment",
+                "openai.chatgpt",
+                "anthropic.claude-code"
+            ],
+            "settings": {
+                // general settings
+                "window.title": "${dirty}${rootName}${separator}${activeEditorShort}${separator}${profileName}${separator}${appName}",
+                "workbench.editor.openPositioning": "last",
+                "editor.renderWhitespace": "all",
+                "editor.renderControlCharacters": true,
+                "editor.wordWrap": "on",
+                "editor.formatOnSave": false,
+                "editor.wrappingStrategy": "advanced",
+                "terminal.integrated.suggest.enabled": false,
+                // - do not verify extensions signature because of bug in Docker for ARM processors on Mac
+                "extensions.verifySignature": false, 
+                "files.exclude": {
+                    "**/.hg": true,
+                    "**/.git": true,
+                    "**/*.orig": true,
+                    "**/export": true,
+                    "**/node_modules": true
+                },
+                "search.useIgnoreFiles": false,
+                "search.exclude": {
+                    "**/.hg": true,
+                    "**/.git": true,
+                    "**/*.orig": true,
+                    "**/build": true,
+                    "**/export": true,
+                    "**/node_modules": true
+                    // allow search in vendor folder to resolve some problematic dependencies
+                    //"**/vendor": true,
+                },
+                // extensions settings
+                "hg.lineAnnotationEnabled": false
+            }
+        }
+    }
+}
