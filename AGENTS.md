@@ -10,4 +10,9 @@ a Codex ho čítajú natívne; Claude Code ho číta cez symlink `CLAUDE.md → 
 
 ## Všeobecný popis
 
-Tento projekt slúži na vývoj pomocných Python skriptov.
+Tento projekt slúži na vývoj pomocných Python skriptov. Skripty sú písané:
+
+- pre Python 3.10+ (viď aj `pyproject.toml`)
+- tak, aby každý z nich mohol byť spustiteľný aj samostatne (napr. `python ./src/runtools/dockerinfo.py`)
+
+Viď aj `README.md`.
