@@ -11,7 +11,7 @@ Skontroluj aktuálne necommitnuté zmeny v repozitári a priprav prehľad pre co
 1. Zobraz zoznam zmenených súborov: `git status --short`
 2. Zobraz diff zmenených súborov: `git diff`
 3. Skontroluj, či zmeny:
-   - Neobsahujú debug výpisy, `print()`, `_logger.debug()` volania určené len na vývoj
+   - Neobsahujú debug výpisy alebo `print()` určené len na vývoj
    - Neobsahujú zakomentovaný kód (skôr zmaž než zakomentovaj)
    - Neobsahujú citlivé údaje (heslá, API kľúče, tokeny)
    - Sú konzistentné s konvenciami projektu z `AGENTS.md`

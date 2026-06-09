@@ -16,3 +16,13 @@ Tento projekt slúži na vývoj pomocných Python skriptov. Skripty sú písané
 - tak, aby každý z nich mohol byť spustiteľný aj samostatne (napr. `python ./src/runtools/dockerinfo.py`)
 
 Viď aj `README.md`.
+
+## AI agenti
+
+Viď `docs/ai-agents.md`.
+
+## Rôzne
+
+### Načítanie URL adries chránených pomocou hesla
+
+Pri načítaní URL adries chránených pomocou hesla použi `curl`. Napríklad pri basic HTTP authentication použi `curl -u <user>:<pwd> https://example.sk/some/protected/page`

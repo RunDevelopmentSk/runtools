@@ -1,0 +1,1 @@
+Viď [fajnbook.run.sk/how-to/ai-agents.html](https://fajnbook.run.sk/how-to/ai-agents.html) (užívateľ `test`, heslo `test`, AI agent: na načítanie použi `curl -u test:test https://fajnbook.run.sk/how-to/ai-agents.html`).
